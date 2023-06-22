@@ -10,7 +10,13 @@
             <p class="card-text"><strong> Languages: </strong> {{ $project->languages }} </p>
 
             {{-- this is possible because of the controller and the relationship created in the Project+Category.php files --}}
-            <p class="card-text"><strong> Category: </strong> {{ $project->category->name }} </p>
+            {{-- <p class="card-text"><strong> Category: </strong> {{ $project->category->name }} </p> --}}
+
+            @if ($project->category != null)
+                <p class="card-text"><strong> Category: </strong> {{ $project->category->name }}</p>
+            @else
+                <p class="card-text"><strong> Category: </strong> <span class="text-danger"> This project has no category </span></p>
+            @endif
         </div>
     </div>
     <div class="mt-5">
