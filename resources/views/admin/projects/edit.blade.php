@@ -32,6 +32,8 @@
                 <option value=""> choose a category </option>
                 @foreach ($categories as $category)
                     <option value="{{$category->id}}"  {{old('category_id', $project->category_id) == $category->id ? 'selected' : ''}} >{{$category->name}}</option>
+                    {{-- <option value="{{$category->id}}"  @selected(old('category_id') == $category_id)>{{$category->name}}</option> 
+                    shorter version but need to check why it doesn't work--}}
                 @endforeach
             </select>
         </div>

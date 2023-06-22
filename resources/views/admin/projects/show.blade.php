@@ -6,8 +6,11 @@
     <div class="card">
         <div class="card-body p-3">
             <p class="card-text"><strong> Image: </strong> <p class="card-text"> <img class="img-fluid" src="{{asset('storage/' . $project->image)}}" alt=""> </p> </p>
-            <p class="card-text"><strong> Description: </strong> {{ $project -> description }} </p>
-            <p class="card-text"><strong> Languages: </strong> {{ $project -> languages }} </p>
+            <p class="card-text"><strong> Description: </strong> {{ $project->description }} </p>
+            <p class="card-text"><strong> Languages: </strong> {{ $project->languages }} </p>
+
+            {{-- this is possible because of the controller and the relationship created in the Project+Category.php files --}}
+            <p class="card-text"><strong> Category: </strong> {{ $project->category->name }} </p>
         </div>
     </div>
     <div class="mt-5">
