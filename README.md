@@ -64,3 +64,56 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+
+
+
+
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('projects', function (Blueprint $table) {
+
+            $table->id();
+
+            $table->unsignedBigInteger('category_id')->nullable();
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('set null');
+
+            $table->string('title', '80')->unique();
+            $table->string('slug');
+            $table->text('description')->nullable();
+            $table->text('languages');
+            $table->string('image')->nullable();
+            $table->timestamps();
+
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        
+        Schema::table('projects', function (Blueprint $table) {
+            $table->dropForeign ('projects_category_id_foreign');
+            $table->dropColumn('category_id'); 
+        });
+
+        Schema::dropIfExists('projects');
+    }
+};

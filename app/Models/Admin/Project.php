@@ -18,4 +18,11 @@ class Project extends Model
         }
         
         protected $fillable = ['title', 'slug', 'description', 'languages', 'image'];
+
+    public function category(){
+        return $this->belongsTo(Category::class);
+    }
+
+
+
 }
