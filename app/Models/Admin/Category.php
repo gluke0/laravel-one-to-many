@@ -12,7 +12,7 @@ class Category extends Model
     protected $table = 'categories';
 
     public function projects(){
-        return $this->hasMany(Projects::class);
+        return $this->hasMany(Project::class);
     }
 
 
